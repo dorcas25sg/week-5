@@ -169,5 +169,68 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
 // the function passed to `ready` until the HTML document is fully loaded and all scripts have
 // been interpreted. It is, therefore, an example of asynchronous behavior.
 $(document).ready(function() {
-  // Do your stuff here
+  //Task 1
+  $("label#text-label1").text('First Name');
+  $("label#text-label2").text('Last Name');
+  $("label#text-label3").text('Street Name');
+  $("label#number-label").text('Unit');
+  $("label#checkbox-label1").text('Above 21');
+  $("label#checkbox-label2").text('Married');
+  $("label#color-label").text('Car color');
+
+  //Task2
+  $("#text-input1").val('Bob');
+  $("#text-input2").val('Builder');
+  $("#text-input3").val('Sesame Street');
+  $("#numeric-input").val('123');
+  $("#cbox-input1").prop( "disabled", false );
+  $("#cbox-input1").prop( "checked", true );
+  $("#cbox-input2").prop( "disabled", false );
+  $("#cbox-input2").prop( "checked", true );
+  $("#color-input").val('#00ff00');
+
+  //Task 3
+  var compile = new Object();
+  compile[$("label#text-label1").text()] = $("#text-input1").val();
+  compile[$("label#text-label2").text()] = $("#text-input2").val();
+  compile[$("label#text-label3").text()] = $("#text-input3").val();
+  compile[$("label#checkbox-label1").text()] = $("#cbox-input1").prop( "checked" );
+  compile[$("label#checkbox-label2").text()] = $("#cbox-input2").prop( "checked");
+  compile[$("label#color-label").text()] = $("#color-input").val();
+  console.log(compile);
+
+  //task 4
+  $("#cbox-input1").prop( "disabled", false );
+  $("#cbox-input2").prop( "disabled", false );
+  $("#text-input1").prop( "disabled", false );
+  $("#text-input2").prop( "disabled", false );
+  $("#text-input3").prop( "disabled", false );
+  $("#numeric-input").prop( "disabled", false );
+  $("#color-input").prop( "disabled", false );
+
+// Task 5
+//  $( "button" ).click(function() {
+//  console.log(compile);
+//});
+
+// Task 6
+$( "button" ).click(function() {
+  $( "#text-input1" ).attr( "type", "number" );
+  $("label#text-label1").text('LAT');
+  $("#text-input1").val(39.94);
+
+  $( "#text-input2" ).attr( "type", "number" );
+  $("label#text-label2").text('LONG');
+  $("#text-input2").val(-75.17);
+
+  $("label#text-label3").text('Description');
+  $("#text-input3").val('Sesame');
+
+  $("label#color-label").text('Color');
+  $("#color-input").val('#ff00ff');
+
+  L.circleMarker([$("#text-input1").val(),$("#text-input2").val()], {color:$("#color-input").val()}).bindPopup($("#text-input3").val()).addTo(map);
+  console.log("marker added");
+});
+
 });
